@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Adidas Shoes",
+        "price": 20.99,
+        "maximum": 12
+    },
+    {
+        "id": 2,
+        "name": "G-Shock Clock",
+        "price": 40,
+        "maximum": 30
+    },
+    {
+        "id": 3,
+        "name": "Nike Shoes",
+        "price": 30,
+        "maximum": 8
+    },
+    {
+        "id": 4,
+        "name": "Iphone X",
+        "price": 1200,
+        "maximum": 15
+    }
+]
