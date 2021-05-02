@@ -1,5 +1,12 @@
+@import './utils/variables';
+@import './utils/mixins';
+
 @import './vendors/normalize';
 
 @import './base/reset';
 
-@import './components/amount';
+@import './components/cart';
+@import './components/buttons';
+@import './components/checkout';
+@import './components/checkout-item';
+@import './components/product';

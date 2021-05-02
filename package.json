@@ -1,0 +1,13 @@
+{
+  "name": "carrito-de-compra",
+  "version": "1.0.0",
+  "description": "Un carrito de compra de practica con JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jose Sanchez (JRS)",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {}
+}

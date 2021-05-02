@@ -1,0 +1,13 @@
+.button {
+    cursor: pointer;
+}
+.product-item__button {
+    @extend .button;
+
+    border-radius: 30px;
+    width: 80%;
+    height: 2rem;
+    border: none;
+    background-color: var(--primary-color-alt);
+    color: var(--primary-color);
+}

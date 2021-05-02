@@ -2,25 +2,29 @@
     {
         "id": 1,
         "name": "Adidas Shoes",
+        "image": "/src/images/nike.jpg",
         "price": 20.99,
         "maximum": 12
     },
     {
         "id": 2,
         "name": "G-Shock Clock",
+        "image": "/src/images/g-shock.jpg",
         "price": 40,
         "maximum": 30
     },
     {
         "id": 3,
         "name": "Nike Shoes",
+        "image": "/src/images/adidas.jpg",
         "price": 30,
         "maximum": 8
     },
     {
         "id": 4,
-        "name": "Iphone X",
-        "price": 1200,
+        "name": "Sony Headphones",
+        "image": "/src/images/sony-headphones.jpg",
+        "price": 200,
         "maximum": 15
     }
 ]

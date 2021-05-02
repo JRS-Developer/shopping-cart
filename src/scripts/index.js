@@ -34,6 +34,9 @@ const ShowProducts = (Data) => {
     Data.forEach((product) => {
         const ProductItem = `
             <div class="product-item">
+                <img class="product-img" src=${product.image} alt=${
+            product.name
+        }>
                 <h3 class="product-name">${product.name}</h3>
                 <span>Price:</span>
                 <span class="product-price">${product.price.toFixed(2)}$</span>
@@ -67,6 +70,7 @@ const SetCart = (Product) => {
             'data-id'
         ),
         name: Product.querySelector('.product-name').textContent,
+        image: Product.querySelector('.product-img').getAttribute('src'),
         price: price,
         quantity: 1,
         maximun: Product.querySelector('.product-maximum').textContent,
@@ -96,13 +100,29 @@ const AddToCart = () => {
 
     Object.values(carrito).forEach((product) => {
         const price = product.price * product.quantity;
+        if (product.quantity == 0) {
+            // const X = document.querySelectorAll('');
+            // console.log(X);
+            return;
+        }
+        const quantity =
+            product.quantity > 1
+                ? product.quantity + ' ' + 'units'
+                : product.quantity + ' ' + 'unit';
         const CheckOutItem = `
-        <div class="checkout-item">
-        <h3 class="checkout-item__title">${product.name}</h3>
-        <span class="checkout-item__price">${price.toFixed(2)}$</span>
-        <span class="checkout-item__quantity">${product.quantity} units</span>
-        <button class="checkout-item__more" data-id="${product.id}">+</button>
-        <button class="checkout-item__less" data-id="${product.id}">-</button>
+        <div class="checkout-item" data-id={${product.id}}>
+            <img class="checkout-item__img" src=${product.image} alt=${
+            product.name
+        }>
+            <h3 class="checkout-item__title">${product.name}</h3>
+            <span class="checkout-item__price">${price.toFixed(2)}$</span>
+            <span class="checkout-item__quantity">${quantity}</span>
+            <button class="checkout-item__more" data-id="${
+                product.id
+            }">+</button>
+            <button class="checkout-item__less" data-id="${
+                product.id
+            }">-</button>
         </div>
         `;
 
@@ -110,10 +130,14 @@ const AddToCart = () => {
     });
     CalcTotal();
 
+    if (CheckOutItemsContainer.hasChildNodes() == false) {
+        RemoveCart();
+        return;
+    }
+
     const RemoveItemsButton = document.getElementById('remove-items');
     RemoveItemsButton.addEventListener('click', () => {
-        carrito = {};
-        CheckOut.innerHTML = Nothing;
+        RemoveCart();
     });
 
     CheckOutItemsContainer.addEventListener('click', (e) => {
@@ -148,4 +172,10 @@ const CalcTotal = () => {
         Quantity > 1 ? `${Quantity} items` : `${Quantity} item`;
 
     TotalPrice = Price.toFixed(2);
+};
+
+const RemoveCart = () => {
+    TotalPrice = 0;
+    carrito = {};
+    CheckOut.innerHTML = Nothing;
 };
