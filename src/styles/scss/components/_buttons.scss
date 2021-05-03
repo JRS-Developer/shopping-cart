@@ -11,3 +11,7 @@ button {
     background-color: var(--primary-color-alt);
     color: var(--primary-color);
 }
+
+.product-item__button:hover {
+    background-color: var(--primary-color-alt-hover);
+}

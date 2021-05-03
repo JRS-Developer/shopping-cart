@@ -4,11 +4,16 @@
     /*  Colores  */
     --primary-color: #ffffff;
     --primary-color-alt: hsla(177, 44%, 10%, 1);
+    --primary-color-alt-hover: hsla(177, 44%, 15%, 1);
     --title-color: hsla(177, 44%, 10%, 1);
     --text-color: hsla(177, 44%, 10%, 0.8);
     --body-bg-color: #ffffff;
     --color: var(--primary-color);
     --color-alt: var(--primary-color-alt);
+    --red: hsl(357, 71%, 34%);
+    --red-hover: hsl(357, 71%, 28%);
+    --green: hsl(177, 76%, 29%);
+    --green-hover: hsl(177, 76%, 23%);
 
     /*  Fuentes  */
     --body-font: 'Rubik', sans-serif;

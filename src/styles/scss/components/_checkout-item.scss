@@ -15,16 +15,24 @@
 
 .checkout-item__more {
     border-radius: 100%;
-    background-color: #12827c;
+    background-color: var(--green);
     border: none;
     color: var(--primary-color);
     height: 30px;
     width: 30px;
 }
 
+.checkout-item__more:hover {
+    background-color: var(--green-hover);
+}
+
 .checkout-item__less {
     @extend .checkout-item__more;
-    background-color: #94191f;
+    background-color: var(--red);
+}
+
+.checkout-item__less:hover {
+    background-color: var(--red-hover);
 }
 
 .checkout-item__info {

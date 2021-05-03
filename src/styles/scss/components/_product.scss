@@ -25,6 +25,11 @@
     font-weight: 500;
 }
 
+.product-item:hover > .product-img {
+    transform: scale(1.02);
+    transition: transform 0.3s;
+}
+
 .product-img {
     width: 110%;
     height: 50%;
@@ -32,6 +37,7 @@
     max-height: 51%;
     border-radius: 20px;
     box-shadow: var(--shadow-image);
+    transition: transform 1s;
 }
 
 .product-price__container {
