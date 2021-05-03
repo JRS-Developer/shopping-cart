@@ -1,9 +1,10 @@
 // Variables
+const PaypalContainer = document.getElementById('paypal-button-container');
 const ProductListContainer = document.getElementById('product-list');
 const CheckOut = document.getElementById('checkout');
+const CheckOutOtherInfo = document.getElementById('checkout__other-info');
 let CheckOutItemsContainer = document.getElementById('checkout__container');
 const Nothing = `
-        <h2>Cart</h2>
         <h4>There are not items here</h4>
         `;
 let carrito = {};
@@ -29,6 +30,9 @@ const ShowProducts = (Data) => {
 
     if (CheckOut.hasChildNodes() == false) {
         CheckOut.innerHTML = Nothing;
+        CheckOutOtherInfo.innerHTML = '';
+        CheckOut.classList.add('checkout--no-items');
+        PaypalContainer.style.display = 'none';
     }
 
     Data.forEach((product) => {
@@ -37,21 +41,27 @@ const ShowProducts = (Data) => {
                 <img class="product-img" src=${product.image} alt=${
             product.name
         }>
+                <div class="product-info">
                 <h3 class="product-name">${product.name}</h3>
+                <div class="product-price__container">
                 <span>Price:</span>
-                <span class="product-price">${product.price.toFixed(2)}$</span>
-                <span>Available items: </span>
-                <span class="product-maximum">${product.maximum}</span>
+                <span class="product-price"><strong>${product.price.toFixed(
+                    2
+                )}</strong>$</span>
+                </div>
                 <button class="product-item__button" data-id="${
                     product.id
                 }">Add to Cart</button>
+                </div>
             </div>`;
         ProductListContainer.insertAdjacentHTML('beforeend', ProductItem);
     });
 
     ProductListContainer.addEventListener('click', (e) => {
         if (e.target.classList == 'product-item__button') {
-            const Product = e.target.parentElement.cloneNode(true);
+            const Product = e.target.parentElement.parentElement.cloneNode(
+                true
+            );
             SetCart(Product);
         }
     });
@@ -73,7 +83,6 @@ const SetCart = (Product) => {
         image: Product.querySelector('.product-img').getAttribute('src'),
         price: price,
         quantity: 1,
-        maximun: Product.querySelector('.product-maximum').textContent,
     };
 
     if (carrito.hasOwnProperty(Item.id)) {
@@ -87,16 +96,27 @@ const SetCart = (Product) => {
 
 const AddToCart = () => {
     const CheckOutElements = `
-    <h2 class="checkout__title">Cart</h2>
     <div class="checkout__container" id="checkout__container"></div>
-            <span class="checkout__total" id="checkout__total"></span>
+    `;
+    const OtherInfo = `
+    <span class="checkout__total" id="checkout__total"></span>
             <span class="checkout__quantity" id="checkout__quantity"></span>
-            <button id="remove-items">Remove Cart</button>
+            <button id="remove-items" class="remove-items-button">Remove Cart</button>
     `;
     CheckOut.innerHTML = CheckOutElements;
+    CheckOutOtherInfo.innerHTML = OtherInfo;
 
     CheckOutItemsContainer = document.getElementById('checkout__container');
     CheckOutItemsContainer.innerHTML = '';
+
+    if (CheckOut.hasChildNodes() == false) {
+        CheckOut.innerHTML = Nothing;
+        CheckOut.classList.add('checkout--no-items');
+        PaypalContainer.style.display = 'none';
+    } else {
+        CheckOut.classList.remove('checkout--no-items');
+        PaypalContainer.style.display = 'block';
+    }
 
     Object.values(carrito).forEach((product) => {
         const price = product.price * product.quantity;
@@ -114,15 +134,20 @@ const AddToCart = () => {
             <img class="checkout-item__img" src=${product.image} alt=${
             product.name
         }>
+            <div class="checkout-item__info">
             <h3 class="checkout-item__title">${product.name}</h3>
-            <span class="checkout-item__price">${price.toFixed(2)}$</span>
-            <span class="checkout-item__quantity">${quantity}</span>
+            <span class="checkout-item__price"> <strong>${price.toFixed(
+                2
+            )}</strong>$ - ${quantity}</span>
+            <div class="checkout-item__buttons">
             <button class="checkout-item__more" data-id="${
                 product.id
             }">+</button>
             <button class="checkout-item__less" data-id="${
                 product.id
             }">-</button>
+            </div>
+            </div>
         </div>
         `;
 
@@ -168,8 +193,7 @@ const CalcTotal = () => {
     const CheckOutQuantity = document.getElementById('checkout__quantity');
 
     CheckOutTotal.textContent = `Total: ${Price.toFixed(2)}$`;
-    CheckOutQuantity.textContent =
-        Quantity > 1 ? `${Quantity} items` : `${Quantity} item`;
+    CheckOutQuantity.textContent = `Items: ${Quantity}`;
 
     TotalPrice = Price.toFixed(2);
 };
@@ -178,4 +202,7 @@ const RemoveCart = () => {
     TotalPrice = 0;
     carrito = {};
     CheckOut.innerHTML = Nothing;
+    CheckOutOtherInfo.innerHTML = '';
+    CheckOut.classList.add('checkout--no-items');
+    PaypalContainer.style.display = 'none';
 };

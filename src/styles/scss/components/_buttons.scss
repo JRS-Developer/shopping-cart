@@ -1,8 +1,8 @@
-.button {
+button {
     cursor: pointer;
 }
 .product-item__button {
-    @extend .button;
+    @extend button;
 
     border-radius: 30px;
     width: 80%;
