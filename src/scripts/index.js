@@ -200,7 +200,7 @@ const CalcTotal = () => {
     CheckOutTotal.textContent = `Total: ${Price.toFixed(2)}$`;
     CheckOutQuantity.textContent = `Items: ${Quantity}`;
 
-    ShowaAmountOfItems(Quantity);
+    UpdateCartIcon(Quantity);
 
     TotalPrice = Price.toFixed(2);
 };
@@ -212,6 +212,8 @@ const RemoveCart = () => {
     CheckOutOtherInfo.innerHTML = '';
     CheckOut.classList.add('checkout--no-items');
     PaypalContainer.className = 'paypal-button-container--none';
+
+    UpdateCartIcon(0);
 };
 
 const MobileCart = () => {
@@ -243,6 +245,10 @@ const CloseCart = () => {
     });
 };
 
-const ShowaAmountOfItems = (Quantity) => {
-    ShoppingCartAmount.textContent = Quantity;
+const UpdateCartIcon = (Quantity) => {
+    if (Quantity) {
+        ShoppingCartAmount.textContent = Quantity;
+    } else {
+        ShoppingCartAmount.textContent = 0;
+    }
 };
