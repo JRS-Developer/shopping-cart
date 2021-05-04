@@ -2,28 +2,28 @@
     {
         "id": 1,
         "name": "Adidas Shoes",
-        "image": "../../images/nike.jpg",
+        "image": "/shopping-cart/src/images/nike.jpg",
         "price": 20.99,
         "maximum": 12
     },
     {
         "id": 2,
         "name": "G-Shock Clock",
-        "image": "../../images/g-shock.jpg",
+        "image": "/shopping-cart/src/images/g-shock.jpg",
         "price": 40,
         "maximum": 30
     },
     {
         "id": 3,
         "name": "Nike Shoes",
-        "image": "../../images/adidas.jpg",
+        "image": "/shopping-cart/src/images/adidas.jpg",
         "price": 30,
         "maximum": 8
     },
     {
         "id": 4,
         "name": "Sony Headphones",
-        "image": "../../images/sony-headphones.jpg",
+        "image": "/shopping-cart/src/images/sony-headphones.jpg",
         "price": 200,
         "maximum": 15
     }
