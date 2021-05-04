@@ -5,7 +5,7 @@ const CheckOut = document.getElementById('checkout');
 const CheckOutOtherInfo = document.getElementById('checkout__other-info');
 let CheckOutItemsContainer = document.getElementById('checkout__container');
 const Nothing = `
-        <h4>There are not items here</h4>
+        <h4>There are no items here</h4>
         `;
 let carrito = {};
 let TotalPrice = 0;
