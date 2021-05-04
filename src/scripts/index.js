@@ -25,7 +25,7 @@ window.addEventListener('resize', () => {
 const FetchData = async () => {
     try {
         const Response = await fetch(
-            'shopping-cart/src/scripts/json/productos.json'
+            '/shopping-cart/src/scripts/json/productos.json'
         );
         const Data = await Response.json();
         ShowProducts(Data);
